@@ -1,0 +1,268 @@
+%------------------------------
+% Packages and Themes
+%------------------------------
+
+\documentclass[aspectratio=169]{beamer}
+% faculty: medicine, engineering, math, science, or default
+\usetheme[faculty=engineering]{SimpleUUlm}
+
+% Packages
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+% Custom column type and commands
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcommand{\swatch}[1]{%
+    \fcolorbox{UUlmMutedBlack}{#1}{\rule{0pt}{1.4em}\hspace{2.2em}}%
+    \\[2pt]{\scriptsize\texttt{#1}}}
+
+%------------------------------
+% Title Page
+%------------------------------
+
+\title{SimpleUUlm Beamer Theme}
+\subtitle{A simple and clean beamer theme for the University of Ulm}
+
+\author{Moritz Wieland}
+
+% Choose from:
+% Faculty of Engineering, Computer Science and Psychology
+% Faculty of Mathematics and Economics
+% Faculty of Natural Sciences
+% Faculty of Medicine
+\institute{
+    Faculty of Engineering, Computer Science and Psychology \\
+    Ulm University
+}
+
+\date{\today}
+
+%------------------------------
+% Presentation Slides
+%------------------------------
+
+\begin{document}
+
+\begin{frame}[noframenumbering, plain]
+    \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+    \tableofcontents
+\end{frame}
+
+%--------------------------------------------------
+\section{Text, Lists and Emphasis}
+%--------------------------------------------------
+
+\begin{frame}{Bullet Lists}
+    Bullets and nested lists pick up the accent color.
+
+    \begin{itemize}
+        \item Top-level item with a nested list
+        \begin{itemize}
+            \item Second-level item
+            \item Another second-level item
+        \end{itemize}
+        \item Inline math renders too: $e^{i\pi} + 1 = 0$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Numbered Lists}
+    Enumerations use the same accent color for their markers.
+
+    \begin{enumerate}
+        \item First step
+        \item Second step
+        \item Third step
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Description Lists}
+    Description lists are themed too --- the term picks up the accent color.
+
+    \begin{description}
+        \item[Accent] Driven by the selected faculty.
+        \item[Structure] Titles, bullets, and rules share one color.
+        \item[Fira Sans] The theme ships with the FiraSans font family.
+    \end{description}
+\end{frame}
+
+\begin{frame}{Emphasis and Alerts}
+    The accent color follows the faculty chosen via
+    \texttt{\textbackslash usetheme[faculty=...]}.
+    Use \alert{alert text} for warnings and
+    \textcolor{UUlmInstitute}{accent text} for emphasis.
+
+    \vspace{0.5em}
+    Inline styling: \textbf{bold}, \emph{emphasis}, \texttt{monospace}, and
+    a \href{https://github.com/mowi12/SimpleUUlm-BeamerTheme}{hyperlink}.
+\end{frame}
+
+\begin{frame}{Blocks}{Standard, alert, and example variants}
+    \begin{block}{Standard block}
+        Title bar in the accent color, body in a light tint of it.
+    \end{block}
+
+    \begin{alertblock}{Alert block}
+        Always red, independent of the faculty color --- for critical points.
+    \end{alertblock}
+
+    \begin{exampleblock}{Example block}
+        Sand accent --- for analogies, asides, or worked examples.
+    \end{exampleblock}
+\end{frame}
+
+%--------------------------------------------------
+\section{Color Palette}
+%--------------------------------------------------
+
+\begin{frame}{Named Colors}{The full UUlm palette at a glance}
+    Every color is available by name; \texttt{UUlmInstitute} is an alias that
+    tracks the chosen faculty.
+
+    \vspace{1em}
+    \begin{columns}[t]
+        \column{0.24\textwidth}\centering
+            \swatch{UUlmRed}\\[1em]
+            \swatch{UUlmGreen}
+        \column{0.24\textwidth}\centering
+            \swatch{UUlmDarkBlue}\\[1em]
+            \swatch{UUlmOrange}
+        \column{0.24\textwidth}\centering
+            \swatch{UUlmLightBlue}\\[1em]
+            \swatch{UUlmAccent}
+        \column{0.24\textwidth}\centering
+            \swatch{UUlmMutedBlack}\\[1em]
+            \swatch{UUlmInstitute}
+    \end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\section{Columns}
+%--------------------------------------------------
+
+\begin{frame}{Two Columns}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Left column}
+            \begin{itemize}
+                \item Columns split the frame
+                \item Good for text beside a figure
+                \item Or for side-by-side comparison
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Right column}
+                A block sits comfortably inside a column for highlighting a
+                takeaway next to supporting text.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%--------------------------------------------------
+\section{Tables and Figures}
+%--------------------------------------------------
+
+\begin{frame}{Full-width Table}
+    \small
+    \begin{tabularx}{\textwidth}{@{} l L L @{}}
+        \toprule
+        \textbf{Feature} & \textbf{Description} & \textbf{Notes} \\
+        \midrule
+        Frame title rule & Rule under each frame title & Optional subtitle above it \\[4pt]
+        Section page     & \texttt{\textbackslash AtBeginSection} divider in this deck & White on accent \\[4pt]
+        Frame number     & Plain number in the footer & From \texttt{footline[frame number]} \\[4pt]
+        Faculty color    & One command swaps the whole accent & Five presets \\
+        \bottomrule
+    \end{tabularx}
+
+    \vspace{2em}
+    {\small\color{UUlmMutedBlack}%
+        \texttt{L} is a left-aligned, wrapping tabularx column from the preamble
+    }
+\end{frame}
+
+\begin{frame}{Comparison Table}
+    \small
+    \begin{tabularx}{\textwidth}{@{} l >{\centering\arraybackslash}X
+                                        >{\centering\arraybackslash}X @{}}
+        \toprule
+                  & \textbf{Option A} & \textbf{Option B} \\
+        \midrule
+        Setup     & \textcolor{UUlmInstitute}{Simple}
+                  & \textcolor{UUlmRed}{Involved} \\[3pt]
+        Control   & \textcolor{UUlmRed}{Limited}
+                  & \textcolor{UUlmInstitute}{Full} \\[3pt]
+        Verdict   & Good default
+                  & For advanced use \\
+        \bottomrule
+    \end{tabularx}
+
+    \vspace{2em}
+    {\small\color{UUlmMutedBlack}%
+        Accent and red can be mixed inline to encode good / bad.%
+    }
+\end{frame}
+
+\begin{frame}{Figure with Caption}
+  \begin{figure}
+    \rule{3cm}{2cm}              % stand-in for an image
+    \caption{The label before this text uses the accent caption color.}
+  \end{figure}
+\end{frame}
+
+%--------------------------------------------------
+\section{Links, Buttons and Notes}
+%--------------------------------------------------
+
+\begin{frame}{Buttons}\label{buttons}
+  \beamerbutton{A button}\hfill
+  \hyperlink{buttons}{\beamergotobutton{Self link}} % same styling, with arrow
+
+  \vspace{1em}
+  Buttons use the accent background with a matching border.
+\end{frame}
+
+\begin{frame}{Footnote}
+  Some claim.\footnote{The mark up there uses the accent footnote-mark color.}
+\end{frame}
+
+%--------------------------------------------------
+\section{Wrap-up}
+%--------------------------------------------------
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item One theme, five faculty presets via \texttt{faculty=...}
+        \item Themed titles, lists, blocks, captions, buttons, and footnotes
+        \item Tables, columns, and the FiraSans font ready out of the box
+    \end{itemize}
+
+    \vspace{0.6em}
+    \begin{alertblock}{}
+        Swap \texttt{\textbackslash usetheme[faculty=engineering]} for
+        \texttt{medicine}, \texttt{math}, \texttt{science}, or
+        \texttt{default} to retheme the whole deck.
+    \end{alertblock}
+\end{frame}
+
+%--------------------------------------------------
+\subsection{References}
+%--------------------------------------------------
+
+\begin{frame}{Citing Sources}
+    Cite references inline with \texttt{\textbackslash cite}: as shown by
+    Smith~\cite{r1}, citations link to the bibliography below.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+    \footnotesize
+    \bibliography{reference.bib}
+    \bibliographystyle{apalike}
+\end{frame}
+
+\end{document}
