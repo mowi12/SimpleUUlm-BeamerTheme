@@ -1,0 +1,38 @@
+%------------------------------------------------------------
+% Package: beamertheme-SimpleUUlm
+% Author: Moritz Wieland (moritz.wieland@googlemail.com)
+% Version: 1.0, 2026-07-01
+% Link: https://github.com/mowi12/SimpleUUlm-BeamerTheme
+% This is free and unencumbered software released into the
+% public domain; see <http://unlicense.org> for details.
+%------------------------------------------------------------
+
+%------------------------------
+% Font Settings
+%------------------------------
+
+\ProvidesPackage{beamerfontthemeSimpleUUlm}[2026/07/01 SimpleUUlm font theme]
+
+\usepackage[sfdefault, medium]{FiraSans}
+\usepackage[T1]{fontenc}
+
+\setbeamerfont{structure}           {family=\sffamily,  series=\mdseries}
+
+\setbeamerfont{title}               {size=\LARGE,       series=\bfseries, parent=structure}
+\setbeamerfont{subtitle}            {size=\normalsize,                    parent=title}
+
+\setbeamerfont{date}                {size=\scriptsize,  series=\mdseries, parent=structure}
+\setbeamerfont{author}              {size=\large,       series=\mdseries, parent=structure}
+\setbeamerfont{institute}           {size=\scriptsize,  series=\mdseries, parent=structure}
+
+\setbeamerfont{section in toc}      {size=\large,       series=\bfseries, parent=structure}
+\setbeamerfont{section in head/foot}{size=\tiny,                          parent=structure}
+\setbeamerfont{subsection in toc}   {size=\small,       series=\mdseries, parent={section in toc}}
+\setbeamerfont{section name}        {                   series=\bfseries, parent=structure}
+
+\setbeamerfont{frametitle}          {size=\Large,       series=\bfseries, parent=structure}
+\setbeamerfont{framesubtitle}       {size=\large,                         parent=frametitle}
+
+\setbeamerfont{caption}             {size=\footnotesize}
+\setbeamerfont{item}                {                   series=\mdseries, parent=structure}
+\setbeamerfont{block title}         {size=\large,       series=\mdseries, parent={structure,block body}}

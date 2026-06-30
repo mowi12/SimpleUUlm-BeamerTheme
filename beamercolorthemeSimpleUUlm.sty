@@ -1,0 +1,111 @@
+%------------------------------------------------------------
+% Package: beamertheme-SimpleUUlm
+% Author: Moritz Wieland (moritz.wieland@googlemail.com)
+% Version: 1.0, 2026-07-01
+% Link: https://github.com/mowi12/SimpleUUlm-BeamerTheme
+% This is free and unencumbered software released into the
+% public domain; see <http://unlicense.org> for details.
+%------------------------------------------------------------
+
+%------------------------------
+% Color Settings
+%------------------------------
+
+\ProvidesPackage{beamercolorthemeSimpleUUlm}[2026/07/01 SimpleUUlm color theme]
+
+\RequirePackage{etoolbox}
+
+% Primary palette (https://www.uni-ulm.de/misc/corporate-design/#c875952)
+
+% House colors
+\definecolor{UUlmBlack}     {RGB}{0,0,0}
+\definecolor{UUlmMutedBlack}{RGB}{87,87,86}
+\definecolor{UUlmLightBlue} {RGB}{125,154,170}
+
+% Faculty colors
+\definecolor{UUlmDarkBlue}  {RGB}{38,84,124} % medicin accent
+\definecolor{UUlmRed}       {RGB}{163,38,56} % engineering, computer science, and psychology accent
+\definecolor{UUlmGreen}     {RGB}{86,170,28} % mathematics, and economics accent
+\definecolor{UUlmOrange}    {RGB}{223,109,7} % natural sciences accent
+
+% Accent color
+\definecolor{UUlmAccent}    {RGB}{169,162,141}
+
+% Text colors (for better contrast)
+\colorlet{UUlmLightBlueText}{UUlmLightBlue!75!black}
+\colorlet{UUlmGreenText}    {UUlmGreen!75!black}
+\colorlet{UUlmOrangeText}   {UUlmOrange!90!black}
+
+% Institute -> accent mapping
+\newcommand*{\SimpleUUlm@faculties}{}
+\listadd{\SimpleUUlm@faculties}{medicine}
+\listadd{\SimpleUUlm@faculties}{engineering}
+\listadd{\SimpleUUlm@faculties}{math}
+\listadd{\SimpleUUlm@faculties}{science}
+\listadd{\SimpleUUlm@faculties}{default}
+\newcommand{\setfacultycolor}[1]{%
+    \def\uulm@inst{#1}%
+    \ifinlist{#1}{\SimpleUUlm@faculties}{}{%
+        \PackageError{beamercolorthemeSimpleUUlm}%
+            {Unknown faculty '#1'}%
+            {Choose one of: medicine, engineering, math, science, default.}%
+    }%
+    \ifdefstring{\uulm@inst}{medicine}{\colorlet{UUlmInstitute}{UUlmDarkBlue}}{%
+    \ifdefstring{\uulm@inst}{engineering}{\colorlet{UUlmInstitute}{UUlmRed}}{%
+    \ifdefstring{\uulm@inst}{math}{\colorlet{UUlmInstitute}{UUlmGreenText}}{%
+    \ifdefstring{\uulm@inst}{science}{\colorlet{UUlmInstitute}{UUlmOrangeText}}{%
+    \colorlet{UUlmInstitute}{UUlmLightBlueText}%
+    }}}}%
+    % Alert color: avoid clashing with the red engineering accent
+    \ifdefstring{\uulm@inst}{engineering}{\colorlet{UUlmAlert}{UUlmOrange}}{%
+    \colorlet{UUlmAlert}{UUlmRed}%
+    }%
+}
+\setfacultycolor{default} % ensures UUlmInstitute exists at load time
+
+% Foundational (cascade sources)
+\setbeamercolor{normal text}      {fg=UUlmBlack,    bg=white}
+\setbeamercolor{structure}        {fg=UUlmInstitute}
+\setbeamercolor{background canvas}{                 bg=white}
+
+% Title page
+\setbeamercolor{title}    {fg=UUlmInstitute,bg=white}
+\setbeamercolor{subtitle} {fg=UUlmInstitute}
+\setbeamercolor{author}   {fg=UUlmBlack}
+\setbeamercolor{institute}{fg=UUlmBlack}
+\setbeamercolor{date}     {fg=UUlmBlack}
+
+% TOC
+\setbeamercolor{section in toc}       {fg=UUlmBlack}
+\setbeamercolor{subsection in toc}    {fg=UUlmBlack}
+\setbeamercolor{section in toc shaded}{fg=UUlmMutedBlack}
+
+% Structural
+\setbeamercolor{frametitle}   {fg=UUlmInstitute,bg=white}
+\setbeamercolor{framesubtitle}{fg=UUlmInstitute}
+\setbeamercolor{section title}{fg=white,        bg=UUlmInstitute}
+\setbeamercolor{part title}   {fg=white,        bg=UUlmInstitute}
+
+% Lists
+\setbeamercolor{item}              {fg=UUlmInstitute}
+\setbeamercolor{itemize item}      {fg=UUlmInstitute}
+\setbeamercolor{itemize subitem}   {fg=UUlmInstitute}
+\setbeamercolor{itemize subsubitem}{fg=UUlmInstitute}
+\setbeamercolor{enumerate item}    {fg=UUlmInstitute}
+\setbeamercolor{enumerate subitem} {fg=UUlmInstitute}
+\setbeamercolor{description item}  {fg=UUlmInstitute}
+
+% Alerts and blocks
+\setbeamercolor{alerted text}       {fg=UUlmAlert}
+\setbeamercolor{block title}        {fg=white,    bg=UUlmInstitute}
+\setbeamercolor{block body}         {fg=UUlmBlack,bg=UUlmInstitute!10!white}
+\setbeamercolor{block title alerted}{fg=white,    bg=UUlmAlert}
+\setbeamercolor{block body alerted} {fg=UUlmBlack,bg=UUlmAlert!10!white}
+\setbeamercolor{block title example}{fg=white,    bg=UUlmAccent!70!black}
+\setbeamercolor{block body example} {fg=UUlmBlack,bg=UUlmAccent!20!white}
+
+% Misc
+\setbeamercolor{caption name} {fg=UUlmInstitute}
+\setbeamercolor{button}       {fg=white,        bg=UUlmInstitute}
+\setbeamercolor{button border}{fg=UUlmInstitute}
+\setbeamercolor{footnote mark}{fg=UUlmInstitute}

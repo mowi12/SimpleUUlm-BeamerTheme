@@ -1,0 +1,88 @@
+%------------------------------------------------------------
+% Package: beamertheme-SimpleUUlm
+% Author: Moritz Wieland (moritz.wieland@googlemail.com)
+% Version: 1.0, 2026-07-01
+% Link: https://github.com/mowi12/SimpleUUlm-BeamerTheme
+% This is free and unencumbered software released into the
+% public domain; see <http://unlicense.org> for details.
+%------------------------------------------------------------
+
+%------------------------------
+% Inner Theme Settings
+%------------------------------
+
+\ProvidesPackage{beamerinnerthemeSimpleUUlm}[2026/07/01 SimpleUUlm inner theme]
+
+\setbeamersize{text margin left=2em,text margin right=2em}
+
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{enumerate subitem}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+
+% table of contents (overview) settings
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}{%
+    \leavevmode
+    \leftskip=3.2em
+    \rlap{\hskip-2em\inserttocsectionnumber.\inserttocsubsectionnumber}%
+    \inserttocsubsection\par
+}
+
+% section divider page: bold "Section N" above the title
+\AtBeginSection[]{%
+    \begin{frame}[plain,noframenumbering]
+        \sectionpage
+    \end{frame}%
+}
+
+% frame title customization
+\setbeamertemplate{frametitle}{%
+    \vspace*{0.5em}%
+    \bfseries\insertframetitle\par
+    \ifx\insertframesubtitle\@empty\else
+        \vskip2pt
+        {\normalfont\small\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}%
+    \fi
+    \vskip-6pt
+    \hrulefill\vspace{-0.1em}%
+}
+
+% title page customization
+\setbeamertemplate{title page}{%
+    \vspace{6em}%
+    \begingroup
+    \centering
+    %
+    \begin{beamercolorbox}[sep=10pt,center]{title}
+        \usebeamerfont{title}\inserttitle\par%
+        \ifx\insertsubtitle\@empty%
+        \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+        \fi%
+    \end{beamercolorbox}%
+    \vskip0.5em\par
+    %
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+        \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}%
+    \vskip-1em
+    %
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+        \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}%
+    %
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+        \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    %
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}%
+    \endgroup
+    \vfill
+}

@@ -1,0 +1,31 @@
+%------------------------------------------------------------
+% Package: beamertheme-SimpleUUlm
+% Author: Moritz Wieland (moritz.wieland@googlemail.com)
+% Version: 1.0, 2026-07-01
+% Link: https://github.com/mowi12/SimpleUUlm-BeamerTheme
+% This is free and unencumbered software released into the
+% public domain; see <http://unlicense.org> for details.
+%------------------------------------------------------------
+
+%------------------------------
+% Beamer Settings
+%------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeSimpleUUlm}[2026/07/01 SimpleUUlm outer theme]
+
+\mode<presentation>
+
+% faculty=medicine|engineering|math|science|default, e.g.
+% \usetheme[faculty=engineering]{SimpleUUlm}
+\def\SimpleUUlm@faculty{default}
+\DeclareOptionBeamer{faculty}{\def\SimpleUUlm@faculty{#1}}
+\ProcessOptionsBeamer
+
+\usefonttheme{SimpleUUlm}
+\usecolortheme{SimpleUUlm}
+\useinnertheme{SimpleUUlm}
+
+\expandafter\setfacultycolor\expandafter{\SimpleUUlm@faculty}
+
+\mode<all>
