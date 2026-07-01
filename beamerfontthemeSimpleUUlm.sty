@@ -13,8 +13,10 @@
 
 \ProvidesPackage{beamerfontthemeSimpleUUlm}[2026/07/01 SimpleUUlm font theme]
 
-\usepackage[sfdefault, medium]{FiraSans}
-\usepackage[T1]{fontenc}
+\mode<presentation>
+
+\RequirePackage[sfdefault, medium]{FiraSans}
+\RequirePackage[T1]{fontenc}
 
 \setbeamerfont{structure}           {family=\sffamily,  series=\mdseries}
 
@@ -36,3 +38,5 @@
 \setbeamerfont{caption}             {size=\footnotesize}
 \setbeamerfont{item}                {                   series=\mdseries, parent=structure}
 \setbeamerfont{block title}         {size=\large,       series=\mdseries, parent={structure,block body}}
+
+\mode<all>
