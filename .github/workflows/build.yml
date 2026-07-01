@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Compile sample.tex
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: sample.tex
+
+      - name: Upload sample.pdf
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-pdf
+          path: sample.pdf
