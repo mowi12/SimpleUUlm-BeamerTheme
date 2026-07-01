@@ -14,8 +14,9 @@ corporate design.
    - `beamerfontthemeSimpleUUlm.sty`
    - `beamerinnerthemeSimpleUUlm.sty`
 
-   Copy them from this repo. Place them in the same directory as your `.tex` file, or in your local TeX tree, e.g.
-   `~/texmf/tex/latex/SimpleUUlm/`.
+   Download them from the [latest release](https://github.com/mowi12/SimpleUUlm-BeamerTheme/releases/latest)
+   (packaged as a zip), or copy them from this repo. Place them in the same directory as your `.tex` file, or in your
+   local TeX tree, e.g. `~/texmf/tex/latex/SimpleUUlm/`.
 
 2. Load the theme in your preamble like any other beamer theme:
 
