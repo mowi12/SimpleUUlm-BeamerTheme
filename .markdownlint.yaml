@@ -1,0 +1,8 @@
+default: true
+line-length:
+  line_length: 120
+  tables: false
+indentation:
+  indent: 4
+first-line-heading: false
+table-column-style: aligned

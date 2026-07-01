@@ -1,0 +1,33 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  chktex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install ChkTeX
+        run: sudo apt-get update && sudo apt-get install -y chktex
+
+      - name: Lint .sty and .tex files
+        run: |
+          # -n1: "command terminated with space" fires on virtually every
+          #      control word at end of line in normal LaTeX, not useful here.
+          # -n11: ellipsis warning misfires inside \texttt{...} placeholder
+          #      syntax (e.g. faculty=...), which isn't prose.
+          chktex -n1 -n11 -q *.sty sample.tex
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v23
+        with:
+          globs: "**/*.md"
