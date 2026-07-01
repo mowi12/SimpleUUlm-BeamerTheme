@@ -13,6 +13,12 @@
 
 \ProvidesPackage{beamerinnerthemeSimpleUUlm}[2026/07/01 SimpleUUlm inner theme]
 
+\RequirePackage{etoolbox}
+
+% progressbar flag is normally set by the outer theme; default off when the
+% inner theme is loaded on its own
+\providecommand{\SimpleUUlm@pbenabled}{false}
+
 \setbeamersize{text margin left=2em,text margin right=2em}
 
 \setbeamertemplate{footline}[frame number]
@@ -41,6 +47,27 @@
     \end{frame}%
 }
 
+% progress bar under the frametitle rule: muted track, institute-colored fill
+% scaled by frame number/total (integer math avoids dimen overflow)
+\newlength{\SimpleUUlm@pbheight}
+\setlength{\SimpleUUlm@pbheight}{1.2pt}
+\newlength{\SimpleUUlm@pbwidth}
+\newcommand{\SimpleUUlm@progressbar}{%
+    % \inserttotalframenumber is 0 on the first compilation (aux not yet written)
+    \ifnum\inserttotalframenumber>0
+        \setlength{\SimpleUUlm@pbwidth}{%
+            \dimexpr(\linewidth/1000)*%
+                \numexpr1000*\insertframenumber/\inserttotalframenumber\relax\relax}%
+    \else
+        \setlength{\SimpleUUlm@pbwidth}{0pt}%
+    \fi
+    \usebeamercolor{progress bar}%
+    \makebox[\linewidth][l]{%
+        \rlap{\color{bg}\rule{\linewidth}{\SimpleUUlm@pbheight}}%
+        \color{fg}\rule{\SimpleUUlm@pbwidth}{\SimpleUUlm@pbheight}%
+    }%
+}
+
 % frame title customization
 \setbeamertemplate{frametitle}{%
     \vspace*{0.5em}%
@@ -50,7 +77,10 @@
         {\normalfont\small\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}%
     \fi
     \vskip-6pt
-    \hrulefill\vspace{-0.1em}%
+    \ifdefstring{\SimpleUUlm@pbenabled}{true}%
+        {\SimpleUUlm@progressbar}%
+        {\makebox[\linewidth][l]{\rule{\linewidth}{\SimpleUUlm@pbheight}}}%
+    \vspace{-0.1em}%
 }
 
 % title page customization

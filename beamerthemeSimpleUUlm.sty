@@ -20,6 +20,10 @@
 % \usetheme[faculty=engineering]{SimpleUUlm}
 \def\SimpleUUlm@faculty{default}
 \DeclareOptionBeamer{faculty}{\def\SimpleUUlm@faculty{#1}}
+% progressbar: opt-in progress bar under each frame title, e.g.
+% \usetheme[progressbar]{SimpleUUlm}
+\def\SimpleUUlm@pbenabled{false}
+\DeclareOptionBeamer{progressbar}[true]{\def\SimpleUUlm@pbenabled{true}}
 \ProcessOptionsBeamer
 
 \usefonttheme{SimpleUUlm}
