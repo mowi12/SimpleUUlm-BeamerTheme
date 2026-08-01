@@ -17,7 +17,7 @@ jobs:
           root_file: sample.tex
 
       - name: Upload sample.pdf
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sample-pdf
           path: sample.pdf
