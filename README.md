@@ -29,6 +29,7 @@ corporate design.
 
    - `faculty` sets the accent color: `engineering`, `medicine`, `math`, `science`, or `default`.
    - `progressbar` (optional) adds a progress bar under each frame title.
+   - `progressbarheight=<length>` (optional, default `2pt`) sets the thickness of the progress bar.
 
 4. Compile with `pdflatex` (or `latexmk -pdf`). The theme requires the `FiraSans` package, which ships with most TeX
    distributions (e.g. TeX Live).

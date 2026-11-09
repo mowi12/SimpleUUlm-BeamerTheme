@@ -20,6 +20,7 @@
 % progressbar flag is normally set by the outer theme; default off when the
 % inner theme is loaded on its own
 \providecommand{\SimpleUUlm@pbenabled}{false}
+\providecommand{\SimpleUUlm@pbheightopt}{2pt}
 
 \setbeamersize{text margin left=2em,text margin right=2em}
 
@@ -49,10 +50,10 @@
     \end{frame}%
 }
 
-% progress bar under the frametitle rule: muted track, institute-colored fill
+% progress bar under the frametitle rule: light institute-tinted track, institute-colored fill
 % scaled by frame number/total (integer math avoids dimen overflow)
 \newlength{\SimpleUUlm@pbheight}
-\setlength{\SimpleUUlm@pbheight}{1.2pt}
+\setlength{\SimpleUUlm@pbheight}{\SimpleUUlm@pbheightopt}
 \newlength{\SimpleUUlm@pbwidth}
 \newcommand{\SimpleUUlm@progressbar}{%
     % \inserttotalframenumber is 0 on the first compilation (aux not yet written)
