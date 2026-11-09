@@ -24,6 +24,10 @@
 % \usetheme[progressbar]{SimpleUUlm}
 \def\SimpleUUlm@pbenabled{false}
 \DeclareOptionBeamer{progressbar}[true]{\def\SimpleUUlm@pbenabled{true}}
+% progressbarheight: thickness of the progress bar (default 2pt), e.g.
+% \usetheme[progressbar,progressbarheight=3pt]{SimpleUUlm}
+\def\SimpleUUlm@pbheightopt{2pt}
+\DeclareOptionBeamer{progressbarheight}{\def\SimpleUUlm@pbheightopt{#1}}
 \ProcessOptionsBeamer
 
 \usefonttheme{SimpleUUlm}
