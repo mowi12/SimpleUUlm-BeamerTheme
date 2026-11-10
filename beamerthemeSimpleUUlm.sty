@@ -34,6 +34,12 @@
 % \usetheme[progressbar,progressbarscope=main]{SimpleUUlm}
 \def\SimpleUUlm@pbscope{all}
 \DeclareOptionBeamer{progressbarscope}{\def\SimpleUUlm@pbscope{#1}}
+% framenumberscope=all|main: what the footline frame number counts (default
+% all). main: shows n / <main frames> before \appendix and counts appendix
+% frames separately, e.g.
+% \usetheme[framenumberscope=main]{SimpleUUlm}
+\def\SimpleUUlm@fnscope{all}
+\DeclareOptionBeamer{framenumberscope}{\def\SimpleUUlm@fnscope{#1}}
 \ProcessOptionsBeamer
 
 \usefonttheme{SimpleUUlm}

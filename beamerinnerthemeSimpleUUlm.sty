@@ -22,10 +22,15 @@
 \providecommand{\SimpleUUlm@pbenabled}{false}
 \providecommand{\SimpleUUlm@pbheightopt}{2pt}
 \providecommand{\SimpleUUlm@pbscope}{all}
+\providecommand{\SimpleUUlm@fnscope}{all}
 
 \setbeamersize{text margin left=2em,text margin right=2em}
 
 \setbeamertemplate{footline}[frame number]
+% framenumberscope=main: count main part and appendix separately
+\ifdefstring{\SimpleUUlm@fnscope}{main}
+    {\setbeamertemplate{page number in head/foot}[appendixframenumber]}
+    {}
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{blocks}[rounded][shadow=false]
