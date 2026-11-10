@@ -30,6 +30,11 @@ corporate design.
    - `faculty` sets the accent color: `engineering`, `medicine`, `math`, `science`, or `default`.
    - `progressbar` (optional) adds a progress bar under each frame title.
    - `progressbarheight=<length>` (optional, default `2pt`) sets the thickness of the progress bar.
+   - `progressbarscope=all|main` (optional, default `all`) sets what the progress bar counts. With `main`, the bar
+     reaches 100% on the last frame before `\appendix` and stays full afterwards, so a long references section or
+     backup slides don't hold it back. Put `\appendix` before those frames.
+   - `framenumberscope=all|main` (optional, default `all`) does the same for the footline frame number: with `main`, it
+     shows `n / <main frames>` before `\appendix` and counts appendix frames separately.
 
 4. Compile with `pdflatex` (or `latexmk -pdf`). The theme requires the `FiraSans` package, which ships with most TeX
    distributions (e.g. TeX Live).
