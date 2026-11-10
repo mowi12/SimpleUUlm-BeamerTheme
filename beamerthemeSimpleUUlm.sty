@@ -28,6 +28,18 @@
 % \usetheme[progressbar,progressbarheight=3pt]{SimpleUUlm}
 \def\SimpleUUlm@pbheightopt{2pt}
 \DeclareOptionBeamer{progressbarheight}{\def\SimpleUUlm@pbheightopt{#1}}
+% progressbarscope=all|main: what the progress bar counts (default all).
+% main: the bar reaches 100% on the last frame before \appendix and stays
+% full on appendix frames (e.g. references, backup slides), e.g.
+% \usetheme[progressbar,progressbarscope=main]{SimpleUUlm}
+\def\SimpleUUlm@pbscope{all}
+\DeclareOptionBeamer{progressbarscope}{\def\SimpleUUlm@pbscope{#1}}
+% framenumberscope=all|main: what the footline frame number counts (default
+% all). main: shows n / <main frames> before \appendix and counts appendix
+% frames separately, e.g.
+% \usetheme[framenumberscope=main]{SimpleUUlm}
+\def\SimpleUUlm@fnscope{all}
+\DeclareOptionBeamer{framenumberscope}{\def\SimpleUUlm@fnscope{#1}}
 \ProcessOptionsBeamer
 
 \usefonttheme{SimpleUUlm}
